@@ -2,9 +2,11 @@
 
 Route::redirect('/', '/login');
 
-Route::redirect('/home', '/admin');
-
+Route::get('/register', 'Auth/RegisterController@create');
+Route::post('register', 'RegistrationController@store');
 Auth::routes(['register' => false]);
+Route::get('admin-login','Auth\AdminLoginController@showLoginForm');
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -20,8 +22,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
 
     Route::resource('users', 'UsersController');
+    Route::resource('barang', 'BarangController');
+    Route::delete('barang/destroy', 'BarangController@massDestroy')->name('barang.massDestroy');
+    Route::resource('kategori', 'KategoriController');
+    Route::delete('kategori/destroy', 'KategoriController@massDestroy')->name('kategori.massDestroy');
+    Route::resource('jenis', 'JenisController');
+    Route::delete('jenis/destroy', 'JenisController@massDestroy')->name('jenis.massDestroy');
 
-    Route::delete('products/destroy', 'ProductsController@massDestroy')->name('products.massDestroy');
+});
+Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('products', 'ProductsController');
 });

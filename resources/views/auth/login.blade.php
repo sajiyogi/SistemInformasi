@@ -44,14 +44,16 @@
 
             <p class="mb-1">
                 <a class="" href="{{ route('password.request') }}">
-                    {{ trans('global.forgot_password') }}
+                    Lupa Kata Sandi?
                 </a>
             </p>
             <p class="mb-0">
 
             </p>
             <p class="mb-1">
-
+                <a class="" href="{{ route('password.request') }}">
+                    Belum Punya akun?
+                </a>
             </p>
         </div>
         <!-- /.login-card-body -->

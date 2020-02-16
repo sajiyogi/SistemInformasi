@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">Project</span>
+        <span class="brand-text font-weight-light" align="center">ADMIN PANEL<span>
     </a>
 
     <!-- Sidebar -->
@@ -12,7 +12,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route("admin.home") }}" class="nav-link">
+                    <a href="{{ route('admin.home') }}" class="nav-link">
                         <p>
                             <i class="fas fa-tachometer-alt">
 
@@ -35,7 +35,7 @@
                         <ul class="nav nav-treeview">
                             @can('permission_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.permissions.index') }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                                         <i class="fas fa-unlock-alt">
 
                                         </i>
@@ -59,7 +59,7 @@
                             @endcan
                             @can('user_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                                         <i class="fas fa-user">
 
                                         </i>
@@ -72,18 +72,49 @@
                         </ul>
                     </li>
                 @endcan
-                @can('product_access')
+
+                
+                    
+                
+                 @can('barang_access')
                     <li class="nav-item">
-                        <a href="{{ route("admin.products.index") }}" class="nav-link {{ request()->is('admin/products') || request()->is('admin/products/*') ? 'active' : '' }}">
-                            <i class="fas fa-cogs">
+                        <a href="{{ route('admin.barang.index') }}" class="nav-link {{ request()->is('admin/barang') || request()->is('admin/barang/*') ? 'active' : '' }}">
+                            <i class="fa fa-book">
 
                             </i>
                             <p>
-                                <span>{{ trans('global.product.title') }}</span>
+                                <span>Barang</span>
                             </p>
                         </a>
                     </li>
-                @endcan
+                 @endcan
+                 @can('kategori_access')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.kategori.index') }}" class="nav-link {{ request()->is('admin/kategori') || request()->is('admin/kategori
+                            /*') ? 'active' : '' }}">
+                            <i class="fa fa-book">
+
+                            </i>
+                            <p>
+                                <span>Kategori</span>
+                            </p>
+                        </a>
+                    </li>
+                 @endcan
+                 @can('jenis_access')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.jenis.index') }}" class="nav-link {{ request()->is('admin/jenis') || request()->is('admin/jenis/*') ? 'active' : '' }}">
+                            <i class="fa fa-book">
+
+                            </i>
+                            <p>
+                                <span>Jenis</span>
+                            </p>
+                        </a>
+                    </li>
+                 @endcan
+
+                    
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
